@@ -7,13 +7,11 @@ export class QrCodeController {
 
   @Get()
   async getQRCode(): Promise<string> {
-    const qrCodeLink = await this.scheduleService.generateQRCode();
-    return `<img src="${qrCodeLink}" alt="QR Code" />`;
+    return this.scheduleService.generateQRCode().then(qrCodeLink => `<img src="${qrCodeLink}" alt="QR Code" />`);
   }
 
   @Get('movies')
   async getMovies(): Promise<any[]> {
-    const movies = await this.scheduleService.generateRandomMovies();
-    return movies;
+    return this.scheduleService.generateRandomMovies();
   }
 }
