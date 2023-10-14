@@ -48,4 +48,3 @@ export class ScheduleService {
     return shuffled.slice(0, 10);
   }
 }
- 
