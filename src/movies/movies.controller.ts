@@ -13,6 +13,8 @@ function shuffleArray(array: any[]): any[] {
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
+private scannedMovies: any[] = [];
+
   @Get('generate-qr')
   async generateQRCode(): Promise<string> {
     const movieList = [
@@ -77,6 +79,11 @@ export class MoviesController {
     const qrCodeData = JSON.stringify(randomMovies);
     const qrCodeUrl = await this.moviesService.generateQRCode(qrCodeData);
     return qrCodeUrl;
+  }
+
+  @Get("scanned")
+  getScannedMovies(): any[] {
+    return this.scannedMovies;
   }
 }
 
